@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="img/logo.png" alt="" class="logo">
+        <ul>
+            <li><a href="My Page.html"> Home</a> </li>
+            <li><a href="programs.html"> Programs</a> </li>
+            <li><a href="cardio.html"> Cardio</a> </li>
+            <li><a href="motivation gallery.html"> Motivation Gallery</a> </li>
+        </ul>
+    </div>
+    <div class="entry">
+        <div class="title">
+            <h2>Information</h2>
+            <form action="My Page.html" method="get">
+                Adınız Soyadınız:
+                <input type="text"><br> <br>
+                Doğum Tarihiniz:
+                <input type="date"><br> <br>
+                Cinsiyetiniz:
+                <input type="radio" name="cinsiyet" id="Kadın">Kadın
+                <input type="radio" name="cinsiyet" id="Erkek">Erkek <br> <br> <br><br><br><br><br><br><br><br>
+                <input type="submit" class="btn">
+            </form>
+        </div>
+        <div class="container" style="position: relative; top: 370px; left: 470px; ">
+            <div class="row">
+                <input type="range" min="20" max="200" value="20" id="weight" oninput="calculate()">
+                <span id="weight-val">20 kg</span>
+            </div>
+            <div class="row">
+                <input type="range" min="100" max="250" value="100" id="height" oninput="calculate()">
+                <span id="height-val">100 cm</span>
+            </div>
+
+            <p id="result">20.0</p>
+            <p id="category">Normal Kilo</p>
+            <p id="category1">İdeal Kilonuz:</p>
+
+        </div>
+        <div class="img">
+            <img src="img/2.jpg" class="foto" alt="">
+        </div>
+        <div class="navbar1">
+            <i class="bob">You Can Do This</i>
+            <i class="fas fa-bomb bomb"></i>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram sosyal"></i></a>
+            <a href="https://twitter.com/?lang=tr" target="_blank"><i class="fab fa-twitter sosyal"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook sosyal"></i></a>
+            <a href="https://tr.linkedin.com/" target="_blank"><i class="fab fa-linkedin sosyal"></i></a>
+        </div>
+
+    </div>
+
+    <script>
+        function calculate() {
+
+            var ik;
+            var bmi;
+            var result = document.getElementById('result');
+
+            var weight = parseInt(document.getElementById('weight').value);
+            document.getElementById("weight-val").textContent = weight + " kg";
+
+            var height = parseInt(document.getElementById('height').value);
+            document.getElementById('height-val').textContent = height + " cm";
+
+            ik = ((height - 100) * (0.9));
+            bmi = (weight / Math.pow((height / 100), 2)).toFixed(1);
+            result.textContent = bmi;
+            category1.textContent = 'İdeal Kilonuz: ' + ik + 'kg';
+
+            if (bmi < 18.5) {
+                category = "Düşük Kilo"
+                result.style.color = "#ffc44d"
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                category = "Normal Kilo"
+                result.style.color = "#0be881"
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                category = "Yüksek Kilo"
+                result.style.color = "#ff884d"
+            } else if (bmi >= 30 && bmi <= 34.9) {
+                category = "Obez"
+                result.style.color = "#ff5e57"
+            } else if (bmi >= 35) {
+                category = "Aşırı Obez"
+                result.style.color = "#ff5e57"
+            }
+
+                document.getElementById('category').textContent = category;
+
+
+        }
+    </script>
+</body>
+
+</html>
